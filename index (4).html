@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWFL Retire — Do You Have Enough to Retire in Southwest Florida?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1B3A5C;--navy-dk:#0F2540;--navy-lt:#2A5080;
+  --gold:#C9A84C;--gold-lt:#E8C96A;
+  --white:#FAFAF8;--sky:#EBF3FA;--sky2:#F4F8FC;
+  --text:#2C2C2C;--muted:#5A6B7A;--border:#D0DAE4;
+  --teal:#3D7A8A;--green:#1A6640;--warn:#8A5E00;--danger:#8B2020;
+  --rad:8px;--rad-lg:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;font-size:18px;line-height:1.75;color:var(--text);background:var(--white)}
+
+header{background:var(--navy);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.18)}
+.logo{font-family:'Playfair Display',Georgia,serif;font-size:22px;color:var(--white);font-weight:700;letter-spacing:-.3px}
+.logo span{color:var(--gold)}
+.hdr-tag{color:rgba(255,255,255,.55);font-size:14px;font-weight:500;letter-spacing:.3px}
+
+.hero{background:var(--navy);padding:88px 24px 100px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:64px;background:var(--white);clip-path:ellipse(56% 100% at 50% 100%)}
+.hero-badge{display:inline-block;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.45);color:#E8C96A;font-size:12px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;padding:6px 18px;border-radius:24px;margin-bottom:28px}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(30px,5vw,52px);color:var(--white);font-weight:700;line-height:1.18;max-width:700px;margin:0 auto 20px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:19px;color:rgba(255,255,255,.78);max-width:540px;margin:0 auto 36px;line-height:1.6}
+.btn{display:inline-block;font-family:'Inter',sans-serif;font-size:17px;font-weight:700;padding:17px 38px;border-radius:50px;cursor:pointer;border:none;text-decoration:none;transition:background .18s,transform .1s}
+.btn-gold{background:var(--gold);color:var(--navy-dk)}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-1px)}
+.hero-note{margin-top:14px;color:rgba(255,255,255,.44);font-size:13px}
+
+.trust-bar{background:var(--sky2);border-bottom:1px solid var(--border);padding:28px 24px;display:flex;justify-content:center;flex-wrap:wrap;gap:32px 48px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy)}
+.trust-icon{font-size:20px}
+
+.article{max-width:720px;margin:0 auto;padding:72px 24px 48px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.article h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,4vw,36px);color:var(--navy);line-height:1.22;margin-bottom:24px}
+.article p{color:var(--text);margin-bottom:18px;font-size:18px}
+.pull-quote{border-left:4px solid var(--gold);padding:16px 24px;margin:28px 0;background:var(--sky2);border-radius:0 var(--rad) var(--rad) 0}
+.pull-quote p{font-family:'Playfair Display',Georgia,serif;font-size:20px;color:var(--navy);margin:0;line-height:1.5;font-style:italic}
+.mistake{border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:var(--rad);padding:22px 26px;margin:22px 0;background:var(--white)}
+.mistake h3{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--navy);margin-bottom:8px}
+.mistake p{font-size:16px;color:var(--muted);margin:0}
+.mid-cta{background:var(--navy);border-radius:var(--rad-lg);padding:40px 36px;text-align:center;margin:40px 0}
+.mid-cta h3{font-family:'Playfair Display',Georgia,serif;color:var(--white);font-size:22px;margin-bottom:10px}
+.mid-cta p{color:rgba(255,255,255,.72);font-size:16px;margin-bottom:24px}
+
+.quiz-wrap{background:var(--sky);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 24px}
+.quiz-inner{max-width:660px;margin:0 auto}
+.quiz-hdr{text-align:center;margin-bottom:40px}
+.quiz-hdr h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,4vw,34px);color:var(--navy);margin-bottom:10px}
+.quiz-hdr p{color:var(--muted);font-size:16px}
+
+.prog-wrap{margin-bottom:28px}
+.prog-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:8px}
+.prog-track{background:var(--border);height:6px;border-radius:3px;overflow:hidden}
+.prog-fill{background:linear-gradient(90deg,var(--navy),var(--teal));height:100%;border-radius:3px;transition:width .4s ease;width:0%}
+
+.quiz-card{background:var(--white);border-radius:var(--rad-lg);padding:40px;box-shadow:0 4px 32px rgba(27,58,92,.1)}
+.quiz-step{display:none}
+.quiz-step.active{display:block}
+.quiz-q{font-family:'Playfair Display',Georgia,serif;font-size:21px;color:var(--navy);margin-bottom:10px;line-height:1.3}
+.quiz-hint{font-size:14px;color:var(--muted);margin-bottom:22px;font-style:italic;line-height:1.5}
+.options{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;align-items:center;gap:14px;padding:15px 18px;border:2px solid var(--border);border-radius:var(--rad);cursor:pointer;font-size:16px;color:var(--text);background:var(--white);text-align:left;width:100%;font-family:'Inter',sans-serif;transition:all .16s}
+.opt:hover{border-color:var(--navy);background:var(--sky2)}
+.opt.sel{border-color:var(--navy);background:var(--sky);color:var(--navy);font-weight:600}
+.dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;transition:all .16s}
+.opt.sel .dot{background:var(--navy);border-color:var(--navy)}
+.nav{display:flex;justify-content:flex-end;align-items:center;margin-top:28px;gap:12px}
+.btn-back{background:none;border:2px solid var(--border);color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;font-weight:600;padding:12px 24px;border-radius:50px;cursor:pointer;transition:all .16s;margin-right:auto}
+.btn-back:hover{border-color:var(--navy);color:var(--navy)}
+.btn-next{background:var(--navy);color:var(--white);font-family:'Inter',sans-serif;font-size:16px;font-weight:700;padding:14px 32px;border-radius:50px;border:none;cursor:pointer;transition:background .16s}
+.btn-next:hover{background:var(--navy-lt)}
+.btn-next:disabled{opacity:.38;cursor:not-allowed}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.fg label{font-size:13px;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.6px}
+.fg input,.fg select{font-family:'Inter',sans-serif;font-size:16px;padding:13px 15px;border:2px solid var(--border);border-radius:var(--rad);color:var(--text);background:var(--white);width:100%;transition:border-color .16s}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--navy)}
+.disclaimer{font-size:13px;color:var(--muted);line-height:1.55;margin-top:6px}
+
+.result{text-align:center;padding:8px 0}
+.score-badge{display:inline-block;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:18px}
+.result-title{font-family:'Playfair Display',Georgia,serif;font-size:26px;color:var(--navy);margin-bottom:12px}
+.result-desc{color:var(--muted);font-size:16px;max-width:460px;margin:0 auto 14px;line-height:1.6}
+.result-action{color:var(--navy);font-size:15px;font-weight:600;max-width:420px;margin:0 auto 28px;line-height:1.55}
+
+footer{background:var(--navy-dk);padding:44px 24px;text-align:center}
+.foot-logo{font-family:'Playfair Display',Georgia,serif;font-size:20px;color:var(--white);font-weight:700;margin-bottom:18px}
+.foot-logo span{color:var(--gold)}
+.foot-links{display:flex;justify-content:center;gap:24px;margin-bottom:18px}
+.foot-links a{color:rgba(255,255,255,.45);font-size:13px;text-decoration:none}
+.foot-links a:hover{color:var(--white)}
+.foot-disc{font-size:12px;color:rgba(255,255,255,.35);max-width:620px;margin:0 auto;line-height:1.65}
+
+@media(max-width:600px){
+  header{padding:12px 16px}
+  .hdr-tag{display:none}
+  .form-row{grid-template-columns:1fr}
+  .quiz-card{padding:26px 18px}
+  .trust-bar{gap:20px 32px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">SWFL<span>Retire</span></div>
+  <div class="hdr-tag">Southwest Florida's Retirement Resource</div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">Free Retirement Check &middot; Built for Lee County</div>
+  <h1>Do You Have <em>Enough</em> to Retire Comfortably in Southwest Florida?</h1>
+  <p>Most people approaching retirement don&rsquo;t have a clear answer. Our free 2-minute check tells you exactly where you stand &mdash; and what to do about it.</p>
+  <button class="btn btn-gold" onclick="scrollToQuiz()">Find Out Now &rarr;</button>
+  <div class="hero-note">No cost &nbsp;&bull;&nbsp; No obligation &nbsp;&bull;&nbsp; Results in under 2 minutes</div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">&#127958;</span> Built for SW Florida Retirees</div>
+  <div class="trust-item"><span class="trust-icon">&#128274;</span> Your Information Stays Private</div>
+  <div class="trust-item"><span class="trust-icon">&#9200;</span> Takes Under 2 Minutes</div>
+  <div class="trust-item"><span class="trust-icon">&#10003;</span> Free &mdash; No Strings Attached</div>
+</div>
+
+<section class="article">
+  <div class="eyebrow">Retirement Planning &middot; Lee County, FL</div>
+  <h2>The Question Every Southwest Florida Retiree Is Really Asking</h2>
+
+  <p>It&rsquo;s not about asset allocation. It&rsquo;s not about which brokerage account to open first. The question we hear most from pre-retirees and retirees across Lee County &mdash; Cape Coral, Fort Myers, Bonita Springs, Naples &mdash; is simpler and more personal than any of that.</p>
+
+  <div class="pull-quote">
+    <p>&ldquo;Do I have enough money to actually retire &mdash; and will it last?&rdquo;</p>
+  </div>
+
+  <p>It&rsquo;s a fair question. And the honest answer is: it depends on a lot more than your account balance. A retirement that feels financially secure isn&rsquo;t just about how much you&rsquo;ve saved &mdash; it&rsquo;s about whether your income covers your life, whether your plan accounts for the costs most people miss, and whether the decisions you make in the next few years will work in your favor or quietly work against you.</p>
+
+  <p>Below are five of the most common retirement mistakes we see in Southwest Florida &mdash; mistakes that can make the difference between a retirement that holds up and one that starts to crack under pressure.</p>
+
+  <div class="eyebrow" style="margin-top:40px">5 Mistakes That Threaten a Comfortable Retirement</div>
+
+  <div class="mistake">
+    <h3>1. Confusing a Savings Balance With a Retirement Plan</h3>
+    <p>Having $800,000 saved means something very different depending on how it converts to monthly income, how long it needs to last, and how it interacts with Social Security and taxes. A balance sheet is not a retirement plan. Without a written income strategy, even a healthy nest egg can run dry faster than expected &mdash; especially in a state with Florida&rsquo;s cost-of-living variables.</p>
+  </div>
+
+  <div class="mistake">
+    <h3>2. Claiming Social Security at the Wrong Time</h3>
+    <p>Filing at 62 instead of waiting can permanently reduce your monthly benefit by as much as 30%. Most retirees file too early &mdash; often because they don&rsquo;t have a strategy built around their specific income needs, health, and spouse&rsquo;s situation. This is one of the few retirement decisions that can&rsquo;t be undone.</p>
+  </div>
+
+  <div class="mistake">
+    <h3>3. Underestimating the Medicare Gap</h3>
+    <p>Medicare covers far less than most people expect. There&rsquo;s no cap on out-of-pocket costs under Original Medicare, no coverage for dental, vision, or hearing, and long-term care isn&rsquo;t covered at all. With Lee County&rsquo;s older population, healthcare costs here run above the national average &mdash; and without a supplemental plan, one serious illness can reshape a retirement that looked perfectly solid on paper.</p>
+  </div>
+
+  <div class="mistake">
+    <h3>4. No Tax Strategy for Withdrawals</h3>
+    <p>The order in which you draw from your accounts &mdash; taxable, tax-deferred, and Roth &mdash; can make a significant difference in what you actually keep each year. Without a withdrawal sequence plan, Required Minimum Distributions can also push retirees into higher tax brackets they didn&rsquo;t anticipate.</p>
+  </div>
+
+  <div class="mistake">
+    <h3>5. An Outdated (or Missing) Estate Plan</h3>
+    <p>Beneficiary designations override your will entirely. An ex-spouse listed on a 20-year-old IRA gets that account regardless of what any other document says. In Florida, estate laws have quirks that catch retirees off guard regularly. Most people either have no plan or haven&rsquo;t updated theirs in years &mdash; and don&rsquo;t realize it until it&rsquo;s too late.</p>
+  </div>
+
+  <p>The good news: every one of these is fixable. But the earlier you catch them, the better the outcome. It starts with understanding where you actually stand.</p>
+
+  <div class="mid-cta">
+    <h3>Find Out If You Have Enough to Retire</h3>
+    <p>Our free Retirement Readiness Check takes 2 minutes and gives you a personalized score across the areas that matter most &mdash; savings, income, healthcare, taxes, and more.</p>
+    <button class="btn btn-gold" onclick="scrollToQuiz()">Take the Free Check &rarr;</button>
+  </div>
+</section>
+
+<section class="quiz-wrap" id="quiz">
+  <div class="quiz-inner">
+    <div class="quiz-hdr">
+      <h2>Your Free Retirement Readiness Check</h2>
+      <p>8 questions &nbsp;&middot;&nbsp; Instant personalized score &nbsp;&middot;&nbsp; No obligation</p>
+    </div>
+
+    <div class="prog-wrap">
+      <div class="prog-labels">
+        <span id="progText">Question 1 of 8</span>
+        <span id="progPct">0%</span>
+      </div>
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    </div>
+
+    <div class="quiz-card" id="quizCard">
+
+      <!-- Q1: Savings (the core "do I have enough" anchor) -->
+      <div class="quiz-step active" data-step="1">
+        <div class="quiz-q">How much have you saved for retirement across all accounts?</div>
+        <div class="quiz-hint">Include 401(k), IRA, brokerage, savings &mdash; everything combined</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,1,0)"><div class="dot"></div>Under $500,000</button>
+          <button class="opt" onclick="pick(this,1,1)"><div class="dot"></div>$500,000 &ndash; $1,000,000</button>
+          <button class="opt" onclick="pick(this,1,2)"><div class="dot"></div>$1,000,000 &ndash; $3,000,000</button>
+          <button class="opt" onclick="pick(this,1,3)"><div class="dot"></div>Over $3,000,000</button>
+        </div>
+        <div class="nav"><button class="btn-next" id="n1" onclick="go(2)" disabled>Continue &rarr;</button></div>
+      </div>
+
+      <!-- Q2: Income mapping -->
+      <div class="quiz-step" data-step="2">
+        <div class="quiz-q">Do you know how much monthly income you&rsquo;ll have in retirement from all sources?</div>
+        <div class="quiz-hint">Social Security, investments, pension, rental income &mdash; combined</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,2,3)"><div class="dot"></div>Yes &mdash; I have it fully mapped out</button>
+          <button class="opt" onclick="pick(this,2,1)"><div class="dot"></div>I have a rough estimate</button>
+          <button class="opt" onclick="pick(this,2,0)"><div class="dot"></div>Partially &mdash; but not a complete picture</button>
+          <button class="opt" onclick="pick(this,2,0)"><div class="dot"></div>Honestly, I&rsquo;m not sure yet</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(1)">&larr; Back</button>
+          <button class="btn-next" id="n2" onclick="go(3)" disabled>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Q3: Timeline -->
+      <div class="quiz-step" data-step="3">
+        <div class="quiz-q">How close are you to retirement?</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,3,3)"><div class="dot"></div>I&rsquo;m already retired</button>
+          <button class="opt" onclick="pick(this,3,3)"><div class="dot"></div>Within the next 2 years</button>
+          <button class="opt" onclick="pick(this,3,2)"><div class="dot"></div>3&ndash;5 years away</button>
+          <button class="opt" onclick="pick(this,3,1)"><div class="dot"></div>More than 5 years away</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(2)">&larr; Back</button>
+          <button class="btn-next" id="n3" onclick="go(4)" disabled>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Q4: Social Security -->
+      <div class="quiz-step" data-step="4">
+        <div class="quiz-q">Have you developed a strategy for when to claim Social Security?</div>
+        <div class="quiz-hint">Timing is permanent once filed &mdash; the difference between filing at 62 vs. 70 can be 30% or more in monthly income</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,4,3)"><div class="dot"></div>Yes &mdash; I&rsquo;ve already claimed or have a specific plan</button>
+          <button class="opt" onclick="pick(this,4,1)"><div class="dot"></div>I know it matters but I&rsquo;m still working it out</button>
+          <button class="opt" onclick="pick(this,4,0)"><div class="dot"></div>I plan to claim as soon as I&rsquo;m eligible at 62</button>
+          <button class="opt" onclick="pick(this,4,0)"><div class="dot"></div>I haven&rsquo;t really looked into it yet</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(3)">&larr; Back</button>
+          <button class="btn-next" id="n4" onclick="go(5)" disabled>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Q5: Healthcare -->
+      <div class="quiz-step" data-step="5">
+        <div class="quiz-q">Do you have a plan for healthcare coverage in retirement?</div>
+        <div class="quiz-hint">Original Medicare has significant gaps &mdash; dental, vision, and long-term care are not covered</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,5,3)"><div class="dot"></div>Yes &mdash; Medicare plus a supplement plan, fully figured out</button>
+          <button class="opt" onclick="pick(this,5,1)"><div class="dot"></div>I plan to use Medicare but haven&rsquo;t chosen supplemental coverage</button>
+          <button class="opt" onclick="pick(this,5,0)"><div class="dot"></div>I know there are gaps but I&rsquo;m not sure how to fill them</button>
+          <button class="opt" onclick="pick(this,5,0)"><div class="dot"></div>I haven&rsquo;t thought much about this yet</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(4)">&larr; Back</button>
+          <button class="btn-next" id="n5" onclick="go(6)" disabled>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Q6: Estate plan -->
+      <div class="quiz-step" data-step="6">
+        <div class="quiz-q">Is your estate plan current?</div>
+        <div class="quiz-hint">Will, beneficiary designations, power of attorney &mdash; outdated documents are one of the most common and costly oversights</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,6,3)"><div class="dot"></div>Yes &mdash; reviewed and updated within the last 3 years</button>
+          <button class="opt" onclick="pick(this,6,1)"><div class="dot"></div>I have documents but they&rsquo;re several years old</button>
+          <button class="opt" onclick="pick(this,6,0)"><div class="dot"></div>I&rsquo;ve started but haven&rsquo;t finished</button>
+          <button class="opt" onclick="pick(this,6,0)"><div class="dot"></div>I don&rsquo;t have an estate plan in place</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(5)">&larr; Back</button>
+          <button class="btn-next" id="n6" onclick="go(7)" disabled>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Q7: Tax withdrawal -->
+      <div class="quiz-step" data-step="7">
+        <div class="quiz-q">Do you have a strategy for withdrawing from your accounts in a tax-efficient way?</div>
+        <div class="quiz-hint">The order you pull from taxable, tax-deferred, and Roth accounts can significantly impact how much of your money you actually keep</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,7,3)"><div class="dot"></div>Yes &mdash; I have a specific withdrawal and tax plan</button>
+          <button class="opt" onclick="pick(this,7,1)"><div class="dot"></div>I have some ideas but nothing formal</button>
+          <button class="opt" onclick="pick(this,7,0)"><div class="dot"></div>I plan to withdraw what I need as I go</button>
+          <button class="opt" onclick="pick(this,7,0)"><div class="dot"></div>I haven&rsquo;t thought about taxes in retirement yet</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(6)">&larr; Back</button>
+          <button class="btn-next" id="n7" onclick="go(8)" disabled>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Q8: Advisor -->
+      <div class="quiz-step" data-step="8">
+        <div class="quiz-q">Are you currently working with a financial advisor?</div>
+        <div class="options">
+          <button class="opt" onclick="pick(this,8,3)"><div class="dot"></div>Yes &mdash; I meet with one at least once a year</button>
+          <button class="opt" onclick="pick(this,8,1)"><div class="dot"></div>I&rsquo;ve met with one before, but not consistently</button>
+          <button class="opt" onclick="pick(this,8,0)"><div class="dot"></div>No &mdash; I handle my finances on my own</button>
+          <button class="opt" onclick="pick(this,8,0)"><div class="dot"></div>No &mdash; but I&rsquo;m actively looking for one</button>
+        </div>
+        <div class="nav">
+          <button class="btn-back" onclick="back(7)">&larr; Back</button>
+          <button class="btn-next" id="n8" onclick="go('form')" disabled>See My Score &rarr;</button>
+        </div>
+      </div>
+
+      <!-- LEAD FORM -->
+      <div class="quiz-step" data-step="form">
+        <div class="quiz-q" style="font-size:19px">Almost there &mdash; where should we send your results?</div>
+        <p style="color:var(--muted);font-size:15px;margin-bottom:22px">Your personalized score appears immediately after submitting.</p>
+        <div class="form-row">
+          <div class="fg"><label>First Name</label><input type="text" id="fName" placeholder="Jane"></div>
+          <div class="fg"><label>Last Name</label><input type="text" id="lName" placeholder="Smith"></div>
+        </div>
+        <div class="fg"><label>Phone Number</label><input type="tel" id="phone" placeholder="(239) 555-0000"></div>
+        <div class="fg"><label>Email Address</label><input type="email" id="email" placeholder="jane@email.com"></div>
+        <div class="fg">
+          <label>Your City</label>
+          <select id="city">
+            <option value="">Select your city...</option>
+            <option>Cape Coral</option><option>Fort Myers</option>
+            <option>Bonita Springs</option><option>Naples</option>
+            <option>Estero</option><option>Marco Island</option>
+            <option>Other SW Florida</option>
+          </select>
+        </div>
+        <p class="disclaimer">By submitting, you agree to be contacted by a local retirement specialist. We respect your privacy and will never sell your information to third parties.</p>
+        <div class="nav">
+          <button class="btn-back" onclick="back(8)">&larr; Back</button>
+          <button class="btn-next" onclick="submit()">Get My Score &rarr;</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="quiz-step" data-step="result" id="resultStep"></div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">SWFL<span>Retire</span></div>
+  <div class="foot-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Contact</a>
+  </div>
+  <p class="foot-disc">SWFLRetire.com is an independent retirement planning resource serving Southwest Florida. We are not a registered investment adviser. Information on this site is for educational purposes only and does not constitute financial, legal, or tax advice. By submitting your information, you consent to being contacted by a licensed financial professional in your area.</p>
+</footer>
+
+<script>
+var ans={};
+function pick(el,step,score){
+  el.parentElement.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});
+  el.classList.add('sel');ans[step]=score;
+  var nb=document.getElementById('n'+step);if(nb)nb.disabled=false;
+}
+function go(step){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  if(step==='form'){document.querySelector('[data-step="form"]').classList.add('active');setProgress(9,9);}
+  else{document.querySelector('[data-step="'+step+'"]').classList.add('active');setProgress(step,8);}
+  document.getElementById('quizCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function back(step){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  document.querySelector('[data-step="'+step+'"]').classList.add('active');setProgress(step,8);
+}
+function setProgress(cur,total){
+  var pct=Math.round(((cur-1)/total)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progText').textContent=(cur<=8)?'Question '+cur+' of 8':'Almost done!';
+  if(cur>8){document.getElementById('progPct').textContent='95%';document.getElementById('progFill').style.width='95%';}
+}
+function calcScore(){
+  var total=0,max=24;for(var k in ans)total+=ans[k];return Math.round((total/max)*100);
+}
+function submit(){
+  var fn=document.getElementById("fName").value.trim();
+  var ln=document.getElementById("lName").value.trim();
+  var ph=document.getElementById("phone").value.trim();
+  var em=document.getElementById("email").value.trim();
+  var city=document.getElementById("city").value;
+  if(!fn||!ph||!em){alert("Please enter your name, phone number, and email to continue.");return;}
+  var score=calcScore();
+  var level=score>=70?"Well Prepared":score>=40?"On Track, With Gaps":"Needs Attention";
+  fetch("https://formspree.io/f/mqevkozo",{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify({
+      "First Name":fn,"Last Name":ln,"Phone":ph,"Email":em,"City":city,
+      "Retirement Score":score+"/100","Readiness Level":level,
+      "Savings Bracket":ans[1],"Income Mapped":ans[2],"Timeline":ans[3],
+      "Social Security":ans[4],"Healthcare Plan":ans[5],"Estate Plan":ans[6],
+      "Tax Strategy":ans[7],"Has Advisor":ans[8]
+    })
+  }).catch(function(){});
+  showResult(score,fn);
+}
+function showResult(score,name){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  var rs=document.getElementById('resultStep');rs.classList.add('active');
+  document.getElementById('progFill').style.width='100%';
+  document.getElementById('progPct').textContent='100%';
+  document.getElementById('progText').textContent='Complete!';
+  var level,color,bg,desc,action;
+  if(score>=70){
+    level='Well Prepared';color='#1A6640';bg='rgba(26,102,64,.12)';
+    desc=name+', your results suggest you\'ve built a strong foundation. Even well-prepared retirees often find meaningful improvements when they review their full plan with a local specialist \u2014 especially around tax strategy and income sequencing.';
+    action='Schedule a complimentary review to confirm your plan is fully optimized for retirement in Southwest Florida.';
+  }else if(score>=40){
+    level='On Track, With Gaps';color='#8A5E00';bg='rgba(138,94,0,.12)';
+    desc=name+', your results show you\'ve made meaningful progress \u2014 but there are a few planning gaps that could significantly affect how long your money lasts and how much you keep.';
+    action='A no-cost conversation with a local retirement specialist could close these gaps before they become real problems down the road.';
+  }else{
+    level='Needs Attention';color='#8B2020';bg='rgba(139,32,32,.12)';
+    desc=name+', your results point to some important gaps worth addressing sooner rather than later. The good news: these are exactly the situations a local retirement specialist helps people work through every day.';
+    action='We recommend scheduling a complimentary review to get a clear picture of where you stand and a concrete plan for what comes next.';
+  }
+  var r=80,circ=Math.PI*r,offset=circ-(score/100)*circ;
+  rs.innerHTML='<div class="result">'
+    +'<svg width="200" height="112" viewBox="0 0 200 112" style="display:block;margin:0 auto 18px">'
+    +'<path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#D8E4EE" stroke-width="13" stroke-linecap="round"/>'
+    +'<path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="'+color+'" stroke-width="13" stroke-linecap="round" stroke-dasharray="'+circ+'" stroke-dashoffset="'+offset+'" style="transition:stroke-dashoffset 1.1s ease"/>'
+    +'<text x="100" y="97" text-anchor="middle" font-size="30" font-weight="700" fill="#1B3A5C" font-family="Georgia,serif">'+score+'</text>'
+    +'<text x="100" y="112" text-anchor="middle" font-size="12" fill="#5A6B7A" font-family="sans-serif">out of 100</text>'
+    +'</svg>'
+    +'<div class="score-badge" style="background:'+bg+';color:'+color+'">'+level+'</div>'
+    +'<h3 class="result-title">Your Retirement Readiness Score: '+score+'/100</h3>'
+    +'<p class="result-desc">'+desc+'</p>'
+    +'<p class="result-action">'+action+'</p>'
+    +'<button class="btn btn-gold" style="font-size:16px" onclick="alert(\'Booking integration goes here!\')">Schedule My Free Consultation \u2192</button>'
+    +'</div>';
+  document.getElementById('quizCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function scrollToQuiz(){document.getElementById('quiz').scrollIntoView({behavior:'smooth'});}
+</script>
+</body>
+</html>
