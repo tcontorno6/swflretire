@@ -446,11 +446,11 @@ function showResult(score,name){
     +'<h3 class="result-title">Your Retirement Readiness Score: '+score+'/100</h3>'
     +'<p class="result-desc">'+desc+'</p>'
     +'<p class="result-action">'+action+'</p>'
-    +'<button class="btn btn-gold" style="font-size:16px" onclick="alert(\'Booking integration goes here!\')">Schedule My Free Consultation \u2192</button>'
+    +'<div id="ctaBox" style="background:#EBF3FA;border:1px solid #D0DAE4;border-radius:12px;padding:24px 28px;margin-top:8px;">'    +'<p style="font-size:16px;color:#1B3A5C;font-weight:600;margin-bottom:6px;">Would you like to hear from a local retirement specialist?</p>'    +'<p style="font-size:14px;color:#5A6B7A;margin-bottom:18px;">No commitment. A specialist will reach out at a time that works for you.</p>'    +'<button class="btn btn-gold" style="font-size:16px" onclick="requestContact()">Yes, I'd Like to Be Contacted 2192</button>'    +'</div>'    +'</div>';
     +'</div>';
   document.getElementById('quizCard').scrollIntoView({behavior:'smooth',block:'start'});
 }
-function scrollToQuiz(){document.getElementById('quiz').scrollIntoView({behavior:'smooth'});}
+function requestContact(){  var box=document.getElementById('ctaBox');  box.innerHTML='<div style="text-align:center;padding:8px 0">'    +'<div style="font-size:28px;margin-bottom:12px;">function scrollToQuiz(){document.getElementById('quiz').scrollIntoView({behavior:'smooth'});}#10003;</div>'    +'<p style="font-size:17px;font-weight:600;color:#1B3A5C;margin-bottom:8px;">You're all set.</p>'    +'<p style="font-size:15px;color:#5A6B7A;line-height:1.6;">A local retirement specialist will be in touch with you shortly. Keep an eye on your email and phone.</p>'    +'</div>';}function scrollToQuiz(){document.getElementById('quiz').scrollIntoView({behavior:'smooth'});}
 </script>
 </body>
 </html>
